@@ -35,18 +35,12 @@ namespace Task.Controllers
             if (newTask.Description.Length < 10) 
                 return BadRequest("Adicione pelomenos 10 carateres!");
 
-                newTask.Id = modelTasks[modelTasks.Count - 1].Id + 1;
+            newTask.Id = modelTasks.Count > 0 ? modelTasks[modelTasks.Count - 1].Id + 1 : 1;
 
             modelTasks.Add(newTask);
             return Ok(modelTasks);
         }
-
-
-
-
-
-
-
+         
 
         [HttpDelete("{id}")]
         public ActionResult<List<ModelTask>> 
